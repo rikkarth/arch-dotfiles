@@ -145,12 +145,13 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# define where workspace opens
 workspace 1 output $primary_mon
 workspace 2 output $primary_mon
-workspace 3 output $primary_mon
-workspace 4 output $primary_mon
+workspace 3 output $secondary_mon
+workspace 4 output $secondary_mon
 workspace 5 output $primary_mon
-workspace 6 output $secondary_mon
+workspace 6 output $primary_mon
 workspace 7 output $secondary_mon
 workspace 8 output $secondary_mon
 workspace 9 output $secondary_mon
