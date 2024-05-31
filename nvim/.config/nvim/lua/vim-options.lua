@@ -14,3 +14,7 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.wo.number = true
+
+vim.cmd [[
+  autocmd CursorMoved,CursorMovedI * if &l:completefunc == "lsp#complete" | pclose | endif
+]]
