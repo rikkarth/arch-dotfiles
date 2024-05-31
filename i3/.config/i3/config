@@ -14,12 +14,13 @@ set $mod Mod4
 set $primary_mon HDMI-1
 set $secondary_mon HDMI-2
 
+# This command sets up horizontal and vertical monitor, where primary is horizontal and secondary is vertical
+exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --mode 1920x1080 --rotate right --pos 1920x-300 --right-of HDMI-1  
+
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 exec_always feh --bg-scale ~/.config/wallpapers/wp4946045.jpg --bg-scale ~/.config/wallpapers/4778494.jpg
 
-# This command sets up horizontal and vertical monitor, where primary is horizontal and secondary is vertical
-exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --mode 1920x1080 --rotate right --pos 1920x-300
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
