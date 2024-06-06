@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
+
 # Configure 5px of space between windows and to the screen edges.
 gaps inner 5px
 
@@ -26,10 +27,10 @@ for_window [class=".*"] gaps inner 0, gaps outer 0, border none
 
 # Set up monitors
 set $primary_mon HDMI-1
-set $secondary_mon HDMI-2
+set $secondary_mon HDMI-0
 
 # This command sets up horizontal and vertical monitor, where primary is horizontal and secondary is vertical
-exec --no-startup-id xrandr --output HDMI-1 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --mode 1920x1080 --rotate right --pos 1920x-300 --right-of HDMI-1  
+exec --no-startup-id ~/.screenlayout/horizontal-vertical.sh 
 
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
@@ -91,6 +92,10 @@ bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym Print exec maim "/home/$USER/Pictures/Screenshots/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/Screenshots/$(date).jpg"
 bindsym Shift+Print exec maim --select "/home/$USER/Pictures/Screenshots/$(date).jpg"
+bindsym $mod+Shift+Print exec "\
+sleep 5; \
+maim --window /home/$USER/Pictures/Screenshots/$(date).jpg"
+
 
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
@@ -161,15 +166,15 @@ set $ws9 "9"
 set $ws10 "10"
 
 # define where workspace opens
-workspace 1 output $primary_mon
-workspace 2 output $primary_mon
-workspace 3 output $secondary_mon
-workspace 4 output $secondary_mon
-workspace 5 output $primary_mon
-workspace 6 output $primary_mon
-workspace 7 output $secondary_mon
-workspace 8 output $secondary_mon
-workspace 9 output $secondary_mon
+workspace $ws1 output $primary_mon
+workspace $ws2 output $primary_mon
+workspace $ws3 output $secondary_mon
+workspace $ws4 output $secondary_mon
+workspace $ws5 output $primary_mon
+workspace $ws6 output $primary_mon
+workspace $ws7 output $secondary_mon
+workspace $ws8 output $secondary_mon
+workspace $ws9 output $secondary_mon
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
